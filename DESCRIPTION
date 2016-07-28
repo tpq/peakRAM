@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 URL: http://github.com/tpq/peakRAM
 BugReports: http://github.com/tpq/peakRAM/issues
 Authors@R: c(
-    person("Thomas", "Quinn", email = "contacttomquinn@gmail.com", role = c("aut", "cre")),
+    person("Thomas", "Quinn", email = "contacttomquinn@gmail.com", role = c("aut", "cre"))
     )
 Description: When working with big datasets, RAM conservation is critically
     important. However, it is not always enough to just monitor the
