@@ -23,17 +23,17 @@ When working with big datasets, RAM conservation is critically
  size of the objects created. So-called "copy-on-modify" behavior,
  characteristic of R, means that some expressions or functions may
  require an unexpectedly large amount of RAM overhead. For example,
- replacing a single value in a matrix (i.e., with \code{'[<-'})
+ replacing a single value in a matrix (e.g., with \code{'[<-'})
  duplicates that matrix in the backend, making this task
- require twice as much space as that used by the matrix itself.
- The \code{peakRAM} function makes it easy to monitor the total
+ require twice as much RAM as that used by the matrix itself.
+ The \code{peakRAM} package makes it easy to monitor the total
  and peak RAM used so that developers can quickly identify and
  eliminate RAM hungry code.
 }
 \examples{
-peakRAM(function() mean(1:1e7),
-        mean(1:1e7),
-        mean(1:1e7 + 1:1e7),
-        mean(1:1e7 * 2))
+peakRAM(function() 1:1e7,
+        1:1e7,
+        1:1e7 + 1:1e7,
+        1:1e7 * 2)
 }
 
