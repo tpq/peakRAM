@@ -5,7 +5,7 @@ Quick start
 
 Welcome to the `peakRAM` GitHub page!
 
-When working with big datasets, RAM conservation is critically important. However, it is not always enough to just monitor the size of the objects created. So-called "copy-on-modify" behavior, characteristic of *R*, means that some expressions or functions may require an unexpectedly large amount of RAM overhead. For example, replacing a single value in a matrix (e.g., with '\[&lt;-') duplicates that matrix in the backend, making this task require twice as much RAM as that used by the matrix itself. The `peakRAM` package makes it easy to monitor the total and peak RAM used so that developers can quickly identify and eliminate RAM hungry code. You can get started with `propr` by installing the most up-to-date version of this package directly from GitHub.
+When working with big datasets, RAM conservation is critically important. However, it is not always enough to just monitor the size of the objects created. So-called "copy-on-modify" behavior, characteristic of *R*, means that some expressions or functions may require an unexpectedly large amount of RAM overhead. For example, replacing a single value in a matrix (e.g., with '\[&lt;-') duplicates that matrix in the backend, making this task require twice as much RAM as that used by the matrix itself. The `peakRAM` package makes it easy to monitor the total and peak RAM used so that developers can quickly identify and eliminate RAM hungry code. You can get started with `peakRAM` by installing the most up-to-date version of this package directly from GitHub.
 
 ``` r
 library(devtools)
@@ -23,10 +23,10 @@ peakRAM(function() 1:1e7,
 ```
 
     ##        Function_Call Elapsed_Time_sec Total_RAM_Used_MiB Peak_RAM_Used_MiB
-    ## 1 function() 1:1e+07            0.001               38.1              38.2
-    ## 2            1:1e+07            0.119               38.1              38.1
-    ## 3  1:1e+07 + 1:1e+07            0.295               38.1              76.3
-    ## 4        1:1e+07 * 2            0.251               76.3             114.4
+    ## 1 function() 1:1e+07            0.085               38.2              38.2
+    ## 2            1:1e+07            0.084               38.2              38.2
+    ## 3  1:1e+07 + 1:1e+07            0.237               38.2              76.3
+    ## 4        1:1e+07 * 2            0.145               76.3             114.5
 
 ### Discussion
 
@@ -41,6 +41,6 @@ peakRAM(1:1e7 * 2:2)
 ```
 
     ##   Function_Call Elapsed_Time_sec Total_RAM_Used_MiB Peak_RAM_Used_MiB
-    ## 1 1:1e+07 * 2:2             0.17               38.2              38.2
+    ## 1 1:1e+07 * 2:2            0.103               38.1              38.1
 
 Now, we have a solution that we can scale confidently, knowing for sure that we will not unwittingly exceed memory capacity through superfluous RAM overhead.
