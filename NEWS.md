@@ -1,4 +1,4 @@
-## peakRAM 2.0.0
+## peakRAM 1.0.0
 ---------------------
 * Introduced `peakRAM` function
   * Core function measures total and peak RAM use
