@@ -1,18 +1,20 @@
 ---
-output: github_document
+title: "Tracking Peak RAM Use and Minimizing Overhead"
+author: "Thomas Quinn"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tracking Peak RAM Use and Minimizing Overhead}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ## Quick start
 
-Welcome to the `peakRAM` GitHub page!
-
-When working with big datasets, RAM conservation is critically important. However, it is not always enough to just monitor the size of the objects created. So-called "copy-on-modify" behavior, characteristic of *R*, means that some expressions or functions may require an unexpectedly large amount of RAM overhead. For example, replacing a single value in a matrix (e.g., with '[<-') duplicates that matrix in the backend, making this task require twice as much RAM as that used by the matrix itself. The `peakRAM` package makes it easy to monitor the total and peak RAM used so that developers can quickly identify and eliminate RAM hungry code. You can get started with `peakRAM` by installing the most up-to-date version of this package directly from GitHub.
+When working with big datasets, RAM conservation is critically important. However, it is not always enough to just monitor the size of the objects created. So-called "copy-on-modify" behavior, characteristic of *R*, means that some expressions or functions may require an unexpectedly large amount of RAM overhead. For example, replacing a single value in a matrix (e.g., with '[<-') duplicates that matrix in the backend, making this task require twice as much RAM as that used by the matrix itself. The `peakRAM` package makes it easy to monitor the total and peak RAM used so that developers can quickly identify and eliminate RAM hungry code. You can get started with `peakRAM` by installing this package directly from CRAN.
 
 ```{r, eval = FALSE}
-library(devtools)
-devtools::install_github("tpq/peakRAM")
+install.packages("peakRAM")
 library(peakRAM)
 ```
 

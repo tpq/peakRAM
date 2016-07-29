@@ -13,6 +13,8 @@ devtools::install_github("tpq/peakRAM")
 library(peakRAM)
 ```
 
+### Monitoring RAM overhead
+
 The `peakRAM` package, inspired by the very elegant `microbenchmark` package, offers an easy way to monitor the total and peak RAM used by any number of *R* expressions or functions, including anonymous functions. Simply call `peakRAM` with any number of comma-separated expressions or functions provided as arguments. This function will execute each argument piecewise, recording the amount of RAM allocated as a result of that call (i.e., "Total RAM Used") as well as the maximum amount of RAM allocated at any point during that call (i.e., "Peak RAM Used"). Note that throughout this package, all RAM use is measured in mebibytes (MiB).
 
 ``` r
@@ -23,10 +25,10 @@ peakRAM(function() 1:1e7,
 ```
 
     ##        Function_Call Elapsed_Time_sec Total_RAM_Used_MiB Peak_RAM_Used_MiB
-    ## 1 function() 1:1e+07            0.085               38.2              38.2
-    ## 2            1:1e+07            0.084               38.2              38.2
-    ## 3  1:1e+07 + 1:1e+07            0.237               38.2              76.3
-    ## 4        1:1e+07 * 2            0.145               76.3             114.5
+    ## 1 function() 1:1e+07            0.110               38.2              38.2
+    ## 2            1:1e+07            0.087               38.2              38.2
+    ## 3  1:1e+07 + 1:1e+07            0.211               38.2              76.3
+    ## 4        1:1e+07 * 2            0.142               76.3             114.5
 
 ### Discussion
 
@@ -41,6 +43,6 @@ peakRAM(1:1e7 * 2:2)
 ```
 
     ##   Function_Call Elapsed_Time_sec Total_RAM_Used_MiB Peak_RAM_Used_MiB
-    ## 1 1:1e+07 * 2:2            0.103               38.1              38.1
+    ## 1 1:1e+07 * 2:2            0.099               38.1              38.1
 
 Now, we have a solution that we can scale confidently, knowing for sure that we will not unwittingly exceed memory capacity through superfluous RAM overhead.
