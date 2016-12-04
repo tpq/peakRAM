@@ -45,7 +45,7 @@ peakRAM <- function(...){
     evalTime <- system.time(result <- eval(arg))
 
     # Add handling for anonymous functions
-    if(class(result) == "function"){
+    if(inherits(result, "function")){
 
       evalTime <- system.time(output <- result())
       rm(result)
