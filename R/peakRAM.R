@@ -27,11 +27,13 @@
 #' @export
 peakRAM <- function(...){
 
-  args <- as.list(substitute(list(...)))[-1]
-  numfunc <- length(args)
+  # Capture R expressions or function calls
+  args <- c(as.list(match.call(expand.dots = FALSE)$`...`), NULL)
+  Function <- sapply(args, function(e) paste0(deparse(e), collapse = ""))
+  Function <- sapply(Function, function(e) gsub(" ", "", e))
 
   # Initialize containers for output
-  Function <- vector("character", numfunc)
+  numfunc <- length(args)
   totaltime <- vector("numeric", numfunc)
   RAMused <- vector("numeric", numfunc)
   RAMpeak <- vector("numeric", numfunc)
@@ -42,9 +44,8 @@ peakRAM <- function(...){
     # Reset garbage collector and save baseline
     start <- gc(verbose = FALSE, reset = TRUE)
 
-    evalTime <- system.time(result <- eval(arg))
-
-    # Add handling for anonymous functions
+    # Evaluate regular and anonymous functions
+    evalTime <- system.time(result <- eval.parent(arg))
     if(inherits(result, "function")){
 
       evalTime <- system.time(output <- result())
@@ -61,7 +62,6 @@ peakRAM <- function(...){
     rm(output)
 
     # Calculate total and peak RAM used
-    Function[i] <- deparse(arg)
     totaltime[i] <- as.numeric(evalTime["elapsed"])
     RAMused[i] <- end[2, 2] - start[2, 2]
     RAMpeak[i] <- end[2, 6] - start[2, 6]
