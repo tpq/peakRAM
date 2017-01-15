@@ -6,13 +6,13 @@ BugReports: http://github.com/tpq/peakRAM/issues
 Authors@R: c(
     person("Thomas", "Quinn", email = "contacttomquinn@gmail.com", role = c("aut", "cre"))
     )
-Description: When working with big datasets, RAM conservation is critically
+Description: When working with big data sets, RAM conservation is critically
     important. However, it is not always enough to just monitor the
     size of the objects created. So-called "copy-on-modify" behavior,
     characteristic of R, means that some expressions or functions may
     require an unexpectedly large amount of RAM overhead. For example,
     replacing a single value in a matrix duplicates that matrix in the
-    backend, making this task require twice as much RAM as that used
+    back-end, making this task require twice as much RAM as that used
     by the matrix itself. This package makes it easy to monitor the total
     and peak RAM used so that developers can quickly identify and
     eliminate RAM hungry code.
