@@ -1,3 +1,7 @@
+## peakRAM 1.0.3
+---------------------
+* Fix bug when `limit` of `gc` is not all `NA`.
+
 ## peakRAM 1.0.2
 ---------------------
 * Fix warning when parsing complex function calls
