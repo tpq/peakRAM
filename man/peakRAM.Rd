@@ -36,4 +36,3 @@ peakRAM(function() 1:1e7,
         1:1e7 + 1:1e7,
         1:1e7 * 2)
 }
-
