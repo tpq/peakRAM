@@ -1,6 +1,6 @@
 Package: peakRAM
 Title: Monitor the Total and Peak RAM Used by an Expression or Function
-Version: 1.0.2
+Version: 1.0.3
 URL: http://github.com/tpq/peakRAM
 BugReports: http://github.com/tpq/peakRAM/issues
 Authors@R: c(
@@ -19,7 +19,7 @@ Description: When working with big data sets, RAM conservation is critically
 License: GPL-2
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 7.1.1
 Depends:
     R (>= 3.2.2)
 Suggests:

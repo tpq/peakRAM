@@ -63,8 +63,18 @@ peakRAM <- function(...){
 
     # Calculate total and peak RAM used
     totaltime[i] <- as.numeric(evalTime["elapsed"])
-    RAMused[i] <- end[2, 2] - start[2, 2]
-    RAMpeak[i] <- end[2, 6] - start[2, 6]
+    get_column_mb = function(object, before_column) {
+      ind = which(colnames(object) == before_column)
+      stopifnot(colnames(object)[ind+1] == "(Mb)")
+      if (length(ind) == 0) {
+        stop("No value found for that column")
+      }
+      # need to ref index and not colname because duplicated colnames for (Mb)
+      object[2, ind + 1]
+    }
+
+    RAMused[i] <- get_column_mb(end, "used")- get_column_mb(start, "used")
+    RAMpeak[i] <- get_column_mb(end, "max used") - get_column_mb(start, "max used")
 
     i <- i + 1
   }
